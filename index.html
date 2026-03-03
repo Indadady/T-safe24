@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>투어메이커 T-Safe 24 Live Safety</title>
     
-    <!-- 카카오톡 공유 시 썸네일 -->
+    <!-- 카카오톡 공유 시 썸네일 (투어메이커 지정 로고) -->
     <meta property="og:title" content="투어메이커 T-Safe 24 긴급지원센터">
     <meta property="og:description" content="클릭 시 학생의 실시간 위치와 인근 응급 시설을 즉시 확인합니다.">
-    <meta property="og:image" content="https://blogger.googleusercontent.com/img/a/AVvXsEhPxG_ONo2BdFAGDNnn-pHIGJTrAq374YbqgwTTlyIZTP22kOWTDD_AyjKDNFPhsHg5t1Iq6zV0dL_NZIj4o97Kd0eWJYCv-NHhtIqme-Mp3htGhAdkqVv5NRU3Jc9TbdbvvVKrPslObA1oNABpgl12QtGwirC2QM5lcPCVoWm8pIbeKuZBbeDHAvpbKEQ">
+    <meta property="og:image" content="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgHfgIX70O5k6Anuo0UgALIdaG9jSga9auHu3uyz0uEirylGPAJnjN_qQbvEGMUvPqUQf_g9FMNUHRxlDcUBf4vZ3Mpy4TnA9WxbmzWYK11gt2zuy_Irl4wctNFjcjLyPo0GPXV792o_J7L9guRMuDfeC1gy7USwywjYbECZgzcsHybuGRRAXAnO1eNmP8/s320/logo.png">
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -35,19 +35,20 @@
 
     <!-- Header & Live Clock -->
     <header class="bg-white shadow-sm sticky top-0 z-50">
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex justify-between items-center border-b border-gray-100">
-            <!-- 투어메이커 신규 로고 -->
-            <img src="https://blogger.googleusercontent.com/img/a/AVvXsEitI-Z-hD82keOJ1AqHw-VTZjpw2U-O5UjtV9h3zblyG0wjsVfBWe9X9o0Q_Spctrt7krkd9qXO0xKTmGJLw4gyMZrRqpshKMFttnyx6OcC8-IGz3XLUZpGQOnRqVdol8jz5HuoDLqsEifnVRhcjUJHm13Sz8JrX9aPswMNUwZPvGtJEnQjhc2PiXlo-B8" alt="Tourmaker Logo" class="h-7 md:h-9">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 py-3 flex justify-between items-center border-b border-gray-100">
+            <!-- 투어메이커 지정 공식 로고 -->
+            <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgHfgIX70O5k6Anuo0UgALIdaG9jSga9auHu3uyz0uEirylGPAJnjN_qQbvEGMUvPqUQf_g9FMNUHRxlDcUBf4vZ3Mpy4TnA9WxbmzWYK11gt2zuy_Irl4wctNFjcjLyPo0GPXV792o_J7L9guRMuDfeC1gy7USwywjYbECZgzcsHybuGRRAXAnO1eNmP8/s320/logo.png" alt="Tourmaker Logo" class="h-6 md:h-8 object-contain">
             <div class="text-right">
                 <span class="bg-red-100 text-red-600 text-[10px] md:text-xs font-bold px-2.5 py-1 rounded-full border border-red-200 inline-flex items-center">
                     <i class="fa-solid fa-satellite-dish mr-1.5 animate-pulse"></i> T-Safe Live Active
                 </span>
-                <div id="liveClock" class="text-xs md:text-sm text-gray-500 font-bold mt-1 tracking-tight">00:00:00</div>
+                <!-- 날짜 및 시차가 자동 적용되는 Live Clock -->
+                <div id="liveClock" class="text-[10px] md:text-xs text-gray-500 font-bold mt-1 tracking-tight">로딩중...</div>
             </div>
         </div>
         <!-- GPS Status Bar -->
         <div class="bg-blue-50 border-b border-blue-100">
-            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-1.5 flex items-center justify-between">
+            <div class="max-w-3xl mx-auto px-4 sm:px-6 py-1.5 flex items-center justify-between">
                 <span class="text-[11px] md:text-xs text-blue-800 font-bold tracking-wide"><i class="fa-solid fa-location-crosshairs mr-1.5"></i> 24시간 실시간 위치 정보망 연동 중</span>
                 <span class="flex h-2 w-2 relative">
                     <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
@@ -57,90 +58,89 @@
         </div>
     </header>
 
-    <!-- Main Container -->
-    <main class="flex-grow max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-6 md:py-10 w-full">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10">
-            
-            <!-- Left Sidebar (Cleaned up for better focus) -->
-            <div class="lg:col-span-5 flex flex-col space-y-6">
-                <!-- Hero Section -->
-                <div class="text-center lg:text-left">
-                    <h1 class="text-2xl md:text-3xl lg:text-4xl font-black text-blue-900 mb-2 md:mb-3 tracking-tight">실시간 긴급 지원 센터</h1>
-                    <p class="text-sm md:text-base text-gray-600 leading-relaxed">
-                        당황하지 마세요. 모든 상황에 대한 해결책이 시스템으로 준비되어 있습니다.<br class="hidden lg:block">
-                        도움이 필요하시면 우측 패널의 버튼을 클릭하세요.
-                    </p>
-                </div>
+    <!-- Main Container (Centered and focused for emergencies) -->
+    <main class="flex-grow max-w-3xl mx-auto px-4 sm:px-6 py-6 md:py-8 w-full flex flex-col space-y-6">
+        
+        <!-- Hero Section -->
+        <div class="text-center">
+            <h1 class="text-2xl md:text-3xl font-black text-blue-900 mb-2 tracking-tight">실시간 긴급 지원 센터</h1>
+            <p class="text-sm md:text-base text-gray-600 leading-relaxed">
+                당황하지 마세요. 모든 상황에 대한 해결책이 준비되어 있습니다.<br>
+                도움이 필요하시면 아래 <strong>SOS 버튼</strong>을 클릭하세요.
+            </p>
+        </div>
 
-                <!-- CEO Message / Philosophy -->
-                <div class="bg-white border border-gray-200 rounded-2xl p-5 md:p-6 shadow-sm">
-                    <h3 class="text-sm md:text-base font-bold text-indigo-900 mb-3 flex items-center">
-                        <i class="fa-solid fa-shield-halved text-indigo-500 mr-2 text-lg"></i> 투어메이커 안전 관리 철학
-                    </h3>
-                    <p class="text-xs md:text-sm text-gray-600 leading-loose text-justify">
-                        "해외 인솔 중 새벽에 아픈 학생을 안고 언어 장벽과 위치 파악의 막막함 속에서 겪었던 뼈저린 경험을 바탕으로 시스템을 구축했습니다. 투어메이커의 매뉴얼은 책상 위 종이가 아니라, 가장 위급할 때 즉각 작동하는 <strong>살아있는 트래블 테크(Travel Tech) 구조 기술</strong>입니다. 고객의 안전은 우리가 완벽히 통제합니다."
-                    </p>
-                    <div class="mt-4 pt-4 border-t border-gray-100 flex justify-end items-center">
-                        <span class="text-sm font-bold text-indigo-800 tracking-wide">- 투어메이커 대표 이재명 -</span>
-                    </div>
-                </div>
+        <!-- 1. SOS Button (Top Priority) -->
+        <button onclick="sendSOS()" class="pulse-btn w-full bg-gradient-to-r from-red-600 to-red-500 hover:from-red-700 text-white rounded-2xl p-6 md:p-8 shadow-2xl flex items-center transform transition active:scale-95 border-b-4 border-red-800">
+            <div class="bg-white/20 rounded-full p-4 md:p-5 mr-4 md:mr-6">
+                <i class="fa-solid fa-bell text-4xl md:text-5xl"></i>
             </div>
+            <div class="text-left flex-1">
+                <h2 class="text-2xl md:text-3xl font-black mb-1 md:mb-2 tracking-tight">긴급 SOS 내 위치 전송</h2>
+                <p class="text-sm md:text-base text-red-100 opacity-90">버튼 클릭 즉시 투어메이커 상황실로 위치 정보 발송</p>
+            </div>
+            <i class="fa-solid fa-chevron-right text-2xl text-white/50 hidden md:block"></i>
+        </button>
 
-            <!-- Right Content / Actions -->
-            <div class="lg:col-span-7 flex flex-col space-y-4 md:space-y-6">
-                
-                <!-- 1. SOS Button -->
-                <button onclick="sendSOS()" class="pulse-btn w-full bg-gradient-to-r from-red-600 to-red-500 hover:from-red-700 text-white rounded-2xl p-6 md:p-8 shadow-xl flex items-center transform transition active:scale-95 border-b-4 border-red-800">
-                    <div class="bg-white/20 rounded-full p-4 md:p-5 mr-5 md:mr-6">
-                        <i class="fa-solid fa-bell text-4xl md:text-5xl"></i>
-                    </div>
-                    <div class="text-left">
-                        <h2 class="text-2xl md:text-3xl font-black mb-1 md:mb-2 tracking-tight">긴급 SOS 내 위치 전송</h2>
-                        <p class="text-sm md:text-base text-red-100 opacity-90">버튼 클릭 즉시 투어메이커 상황실로 위치 정보 발송</p>
-                    </div>
+        <!-- 2. Facility Search Grid (Domestic & Overseas) -->
+        <div class="bg-white border border-gray-200 rounded-2xl p-5 md:p-6 shadow-sm">
+            <h2 class="text-base md:text-lg font-bold text-gray-800 mb-4 flex items-center">
+                <i class="fa-solid fa-map-location-dot mr-2 text-blue-500"></i> 내 주변 필수 시설 실시간 매칭 (국내/해외 공통)
+            </h2>
+            <div class="grid grid-cols-3 gap-3 md:gap-4">
+                <button onclick="findFacility('응급실 OR emergency room')" class="bg-blue-50 hover:bg-blue-100 hover:shadow-md text-blue-700 p-4 rounded-xl flex flex-col items-center justify-center transition active:scale-95 border border-blue-100 group">
+                    <i class="fa-solid fa-truck-medical text-2xl md:text-3xl mb-2 group-hover:scale-110 transition"></i>
+                    <span class="text-xs md:text-sm font-bold text-center">응급실<br class="md:hidden">/병원</span>
                 </button>
-
-                <!-- 2. Facility Search Grid -->
-                <div class="bg-white border border-gray-200 rounded-2xl p-5 md:p-6 shadow-sm">
-                    <h2 class="text-base md:text-lg font-bold text-gray-800 mb-4 flex items-center">
-                        <i class="fa-solid fa-map-location-dot mr-2 text-blue-500"></i> 내 주변 필수 응급 시설 실시간 매칭
-                    </h2>
-                    <div class="grid grid-cols-3 gap-3 md:gap-4">
-                        <button onclick="findFacility('hospital OR emergency room')" class="bg-blue-50 hover:bg-blue-100 hover:shadow-md text-blue-700 p-4 md:p-5 rounded-xl flex flex-col items-center justify-center transition active:scale-95 border border-blue-100 group">
-                            <i class="fa-solid fa-truck-medical text-2xl md:text-3xl mb-2 group-hover:scale-110 transition"></i>
-                            <span class="text-xs md:text-sm font-bold text-center">응급실<br class="md:hidden">/병원</span>
-                        </button>
-                        <button onclick="findFacility('pharmacy')" class="bg-green-50 hover:bg-green-100 hover:shadow-md text-green-700 p-4 md:p-5 rounded-xl flex flex-col items-center justify-center transition active:scale-95 border border-green-100 group">
-                            <i class="fa-solid fa-pills text-2xl md:text-3xl mb-2 group-hover:scale-110 transition"></i>
-                            <span class="text-xs md:text-sm font-bold text-center">인근 약국<br class="md:hidden">(경증)</span>
-                        </button>
-                        <button onclick="findFacility('police station')" class="bg-gray-50 hover:bg-gray-200 hover:shadow-md text-gray-700 p-4 md:p-5 rounded-xl flex flex-col items-center justify-center transition active:scale-95 border border-gray-200 group">
-                            <i class="fa-solid fa-building-shield text-2xl md:text-3xl mb-2 group-hover:scale-110 transition"></i>
-                            <span class="text-xs md:text-sm font-bold text-center">경찰서<br class="md:hidden">(분실)</span>
-                        </button>
-                    </div>
-                </div>
-
-                <!-- 3. Two Columns for Manuals -->
-                <div class="grid grid-cols-2 gap-3 md:gap-4">
-                    <button onclick="toggleModal('medicalModal')" class="bg-white border border-gray-200 rounded-2xl p-5 md:p-6 shadow-sm text-left transform transition hover:bg-teal-50 hover:-translate-y-1 active:scale-95 border-b-4 border-teal-500 group">
-                        <i class="fa-solid fa-language text-3xl md:text-4xl text-teal-500 mb-3 md:mb-4 group-hover:scale-110 transition origin-left"></i>
-                        <h2 class="text-base md:text-lg font-bold text-gray-800 leading-tight">현지 의료진 전용<br><span class="text-teal-600">다국어 플래시카드</span></h2>
-                    </button>
-                    <button onclick="toggleModal('manualModal')" class="bg-white border border-gray-200 rounded-2xl p-5 md:p-6 shadow-sm text-left transform transition hover:bg-orange-50 hover:-translate-y-1 active:scale-95 border-b-4 border-orange-400 group">
-                        <i class="fa-solid fa-book-open-reader text-3xl md:text-4xl text-orange-400 mb-3 md:mb-4 group-hover:scale-110 transition origin-left"></i>
-                        <h2 class="text-base md:text-lg font-bold text-gray-800 leading-tight">투어메이커 T-Safe<br><span class="text-orange-500">상황별 행동 매뉴얼</span></h2>
-                    </button>
-                </div>
+                <button onclick="findFacility('약국 OR pharmacy')" class="bg-green-50 hover:bg-green-100 hover:shadow-md text-green-700 p-4 rounded-xl flex flex-col items-center justify-center transition active:scale-95 border border-green-100 group">
+                    <i class="fa-solid fa-pills text-2xl md:text-3xl mb-2 group-hover:scale-110 transition"></i>
+                    <span class="text-xs md:text-sm font-bold text-center">인근 약국<br class="md:hidden">(경증)</span>
+                </button>
+                <button onclick="findFacility('경찰서 OR police station')" class="bg-gray-50 hover:bg-gray-200 hover:shadow-md text-gray-700 p-4 rounded-xl flex flex-col items-center justify-center transition active:scale-95 border border-gray-200 group">
+                    <i class="fa-solid fa-building-shield text-2xl md:text-3xl mb-2 group-hover:scale-110 transition"></i>
+                    <span class="text-xs md:text-sm font-bold text-center">경찰서<br class="md:hidden">(분실)</span>
+                </button>
             </div>
         </div>
+
+        <!-- 3. Two Columns for Manuals -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <button onclick="toggleModal('medicalModal')" class="bg-white border border-gray-200 rounded-2xl p-5 shadow-sm text-left transform transition hover:bg-teal-50 hover:-translate-y-1 active:scale-95 border-b-4 border-teal-500 group flex items-center md:block">
+                <i class="fa-solid fa-language text-3xl md:text-4xl text-teal-500 mr-4 md:mr-0 md:mb-4 group-hover:scale-110 transition origin-left"></i>
+                <div>
+                    <h2 class="text-base md:text-lg font-bold text-gray-800 leading-tight">현지 의료진 전용<br class="hidden md:block"><span class="text-teal-600">다국어 플래시카드</span></h2>
+                    <p class="text-[11px] text-gray-500 mt-1 md:hidden">해외 병원 방문 시 의사소통 지원</p>
+                </div>
+            </button>
+            <button onclick="toggleModal('manualModal')" class="bg-white border border-gray-200 rounded-2xl p-5 shadow-sm text-left transform transition hover:bg-orange-50 hover:-translate-y-1 active:scale-95 border-b-4 border-orange-400 group flex items-center md:block">
+                <i class="fa-solid fa-book-open-reader text-3xl md:text-4xl text-orange-400 mr-4 md:mr-0 md:mb-4 group-hover:scale-110 transition origin-left"></i>
+                <div>
+                    <h2 class="text-base md:text-lg font-bold text-gray-800 leading-tight">투어메이커 T-Safe<br class="hidden md:block"><span class="text-orange-500">상황별 행동 매뉴얼</span></h2>
+                    <p class="text-[11px] text-gray-500 mt-1 md:hidden">지진, 사고, 분실 등 위기 대응법</p>
+                </div>
+            </button>
+        </div>
+
+        <!-- 4. CEO Message / Philosophy (Softened tone, localized to domestic/overseas) -->
+        <div class="mt-8 bg-transparent border-t border-gray-300 pt-6">
+            <h3 class="text-sm md:text-base font-bold text-indigo-900 mb-3 flex items-center justify-center md:justify-start">
+                <i class="fa-solid fa-shield-halved text-indigo-500 mr-2 text-lg"></i> 투어메이커 안전 관리 철학
+            </h3>
+            <p class="text-xs md:text-sm text-gray-500 leading-loose text-justify bg-gray-50 p-4 rounded-xl border border-gray-200">
+                "국내외 현장 인솔 중, 새벽에 아픈 학생을 안고 언어 장벽과 위치 파악의 막막함 속에서 겪었던 뼈저린 경험을 바탕으로 시스템을 구축했습니다. 투어메이커의 매뉴얼은 책상 위 종이가 아니라, 가장 위급할 때 즉각 작동하는 <strong>살아있는 트래블 테크(Travel Tech) 구조 기술</strong>입니다. 어떤 상황에서도 고객의 안전을 최우선으로 보호하고 책임지겠습니다."
+            </p>
+            <div class="mt-3 flex justify-end items-center px-2">
+                <span class="text-sm font-bold text-indigo-800 tracking-wide">- 투어메이커 대표 이재명 -</span>
+            </div>
+        </div>
+
     </main>
 
     <!-- 🏥 Medical Translation Modal -->
     <div id="medicalModal" class="fixed inset-0 bg-black/70 z-[100] hidden flex items-center justify-center px-4 backdrop-blur-sm transition-opacity">
         <div class="bg-white rounded-2xl w-full max-w-lg overflow-hidden shadow-2xl flex flex-col max-h-[90vh] transform transition-all">
             <div class="bg-teal-600 p-4 md:p-5 flex justify-between items-center text-white">
-                <h3 class="font-bold text-lg md:text-xl"><i class="fa-solid fa-user-doctor mr-2"></i>의료진 전용 번역 카드</h3>
+                <h3 class="font-bold text-lg md:text-xl"><i class="fa-solid fa-user-doctor mr-2"></i>해외 현지 의료진 번역 카드</h3>
                 <button onclick="toggleModal('medicalModal')" class="text-white/80 hover:text-white hover:rotate-90 transition p-1"><i class="fa-solid fa-xmark text-2xl"></i></button>
             </div>
             <div class="p-4 md:p-6 overflow-y-auto space-y-4 md:space-y-5 bg-gray-50 flex-1">
@@ -156,12 +156,12 @@
                             <option value="ja">일본어</option>
                             <option value="zh-CN">중국어</option>
                         </select>
-                        <button onclick="openTranslator()" class="bg-indigo-600 text-white px-3 py-2 rounded-lg text-sm font-bold hover:bg-indigo-700 transition">번역</button>
+                        <button onclick="openTranslator()" class="bg-indigo-600 text-white px-3 py-2 rounded-lg text-sm font-bold hover:bg-indigo-700 transition whitespace-nowrap">번역</button>
                     </div>
                 </div>
 
                 <p class="text-xs md:text-sm text-gray-600 bg-white border border-gray-200 p-3 rounded-lg text-center font-medium shadow-sm">
-                    <i class="fa-solid fa-mobile-screen-button text-teal-500 mr-1"></i> 휴대폰 화면을 현지 의사나 간호사에게 직접 보여주세요.
+                    <i class="fa-solid fa-mobile-screen-button text-teal-500 mr-1"></i> 해외 병원 방문 시 휴대폰 화면을 직접 보여주세요.
                 </p>
                 
                 <!-- Card 1 -->
@@ -242,12 +242,12 @@
                     </ul>
                 </div>
 
-                <!-- 4. Lost Passport -->
+                <!-- 4. Lost Passport / ID -->
                 <div class="bg-white border border-gray-200 p-5 rounded-xl shadow">
-                    <h4 class="font-bold text-lg text-blue-600 mb-3 flex items-center border-b pb-2"><i class="fa-solid fa-passport text-xl mr-2"></i>여권 및 중요 물품 분실 시</h4>
+                    <h4 class="font-bold text-lg text-blue-600 mb-3 flex items-center border-b pb-2"><i class="fa-solid fa-id-card text-xl mr-2"></i>신분증/여권 및 중요 물품 분실 시</h4>
                     <ul class="text-[13px] md:text-sm text-gray-700 space-y-3 list-decimal pl-5 leading-relaxed">
-                        <li>가이드북 메인의 <strong>[경찰서 찾기]</strong>를 눌러 인근 경찰서에 방문해 '분실 증명서'를 발급받습니다.</li>
-                        <li>여권의 경우 대사관 방문이 필요하므로 즉시 상황실에 보고하여 여권 사본 및 행정 지원을 요청하세요.</li>
+                        <li>메인 화면의 <strong>[경찰서 찾기]</strong>를 눌러 인근 경찰서에 방문해 '분실 증명서'를 발급받습니다.</li>
+                        <li>해외 여권 분실의 경우 대사관 방문이 필요하므로 즉시 상황실에 보고하여 여권 사본 및 행정 지원을 요청하세요.</li>
                     </ul>
                 </div>
 
@@ -255,22 +255,20 @@
         </div>
     </div>
 
-    <!-- Official Tech Footer -->
+    <!-- Official Tech Footer (가이드북 탑재를 위해 버튼 삭제, 기본 카피라이트만 유지) -->
     <footer class="bg-white border-t border-gray-200 mt-auto">
-        <div class="max-w-5xl mx-auto px-4 py-6 text-center">
-            <p class="text-xs md:text-sm text-gray-500 tracking-wide font-medium">
+        <div class="max-w-3xl mx-auto px-4 py-4 md:py-6 text-center">
+            <p class="text-[11px] md:text-xs text-gray-500 tracking-wide font-medium">
                 <strong>[ T-Safe 24 Live System ]</strong><br>
                 <span class="mt-1 inline-block">© TOURMAKER. All Rights Reserved.</span>
             </p>
         </div>
     </footer>
 
-    <!-- JavaScript 로직 (대표님 마스터 컨트롤 적용) -->
+    <!-- JavaScript 로직 -->
     <script>
         // =====================================================================
         // ⚙️ [투어메이커 범용 수신처 설정] 
-        // 100% 범용 매뉴얼을 위해, 긴급 상황 시 본사 컨트롤타워로 문자가 발송되도록 세팅합니다.
-        // 스마트폰 기종에 따라 다중 발송은 쉼표(,)를 통해 이루어집니다.
         // =====================================================================
         const TOURMAKER_CONFIG = {
             // 이재명 대표님, 조혁 이사님 번호 동시 세팅
@@ -278,11 +276,20 @@
         };
         // =====================================================================
 
-        // 실시간 시계 로직 
+        // 실시간 시계 로직 (날짜 포함 및 스마트폰 OS의 현지 시차 자동 반영)
         function updateClock() {
             const now = new Date();
-            const timeString = now.toLocaleTimeString('ko-KR', { hour12: false, hour: '2-digit', minute:'2-digit', second:'2-digit' });
-            document.getElementById('liveClock').textContent = `LIVE ${timeString}`;
+            
+            // 날짜와 시간을 한국어 포맷에 맞게 출력 (OS가 해외 시간을 잡으면 자동으로 해외 시간 적용)
+            const options = { 
+                year: 'numeric', month: '2-digit', day: '2-digit', weekday: 'short',
+                hour12: false, hour: '2-digit', minute:'2-digit', second:'2-digit' 
+            };
+            
+            // ex) "2026. 03. 03. (화) 10:15:30" 형태로 변환
+            const timeString = now.toLocaleDateString('ko-KR', options).replace(/,/g, '');
+            
+            document.getElementById('liveClock').textContent = `LIVE | ${timeString}`;
         }
         setInterval(updateClock, 1000);
         updateClock();
@@ -297,9 +304,8 @@
                     const lng = position.coords.longitude;
                     const mapLink = `https://www.google.com/maps?q=${lat},${lng}`;
                     
-                    const message = encodeURIComponent(`🚨 [투어메이커 T-Safe 24 긴급호출]\n\n학생/고객이 구조를 요청했습니다.\n아래 링크를 눌러 실시간 위치를 즉시 확인하세요.\n\n📍 GPS 위치 확인:\n${mapLink}`);
+                    const message = encodeURIComponent(`🚨 [투어메이커 T-Safe 24 긴급호출]\n\n학생/인솔자가 구조를 요청했습니다.\n아래 링크를 눌러 실시간 위치를 즉시 확인하세요.\n\n📍 GPS 위치 확인:\n${mapLink}`);
                     
-                    // 지정된 대표님, 이사님 번호로 발송 포맷 연결
                     window.location.href = `sms:${TOURMAKER_CONFIG.sosReceivers}?body=${message}`;
                     
                 }, function(error) {
@@ -310,7 +316,7 @@
             }
         }
 
-        // 2. 인근 시설 매칭 로직
+        // 2. 인근 시설 매칭 로직 (제주도/국내외 호환을 위해 한/영 키워드 혼합 사용)
         function findFacility(keyword) {
             let facilityName = "병원";
             if(keyword.includes("pharmacy")) facilityName = "약국";
@@ -322,12 +328,12 @@
                 navigator.geolocation.getCurrentPosition(function(position) {
                     const lat = position.coords.latitude;
                     const lng = position.coords.longitude;
-                    window.open(`https://www.google.com/maps/search/${keyword}/@${lat},${lng},15z`, '_blank');
+                    window.open(`https://www.google.com/maps/search/${encodeURI(keyword)}/@${lat},${lng},15z`, '_blank');
                 }, function(error) {
-                    window.open(`https://www.google.com/maps/search/${keyword}`, '_blank');
+                    window.open(`https://www.google.com/maps/search/${encodeURI(keyword)}`, '_blank');
                 });
             } else {
-                window.open(`https://www.google.com/maps/search/${keyword}`, '_blank');
+                window.open(`https://www.google.com/maps/search/${encodeURI(keyword)}`, '_blank');
             }
         }
 
